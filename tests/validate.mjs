@@ -9,6 +9,7 @@ const requiredFiles = [
   "content.js",
   "script.js",
   "assets/salmon-mark.svg",
+  "assets/yen-hsun-huang.webp",
   "404.html",
   "robots.txt",
   "sitemap.xml",
@@ -35,6 +36,16 @@ assert.ok(profile.projects.length >= 4, "at least four selected projects are req
 assert.ok(profile.methods.length >= 3, "at least three method areas are required");
 assert.ok(profile.presentations.length >= 3, "at least three presentations are required");
 assert.ok(profile.questions.length >= 3, "at least three current questions are required");
+assert.ok(
+  profile.links.some(
+    ({ href }) => href === "https://www.linkedin.com/in/yen-hsun-huang-4866a51bb/",
+  ),
+  "LinkedIn must be available from the hero",
+);
+assert.ok(
+  files["index.html"].includes('src="assets/yen-hsun-huang.webp"'),
+  "portrait must be rendered in the hero",
+);
 
 for (const project of profile.projects) {
   assert.match(project.title, /\S+/);

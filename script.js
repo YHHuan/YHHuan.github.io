@@ -155,7 +155,7 @@
 
   const renderPresentations = () => {
     const container = document.querySelector("#presentations-list");
-    content.presentations.forEach(({ year, type, title }) => {
+    content.presentations.forEach(({ year, type, title, fullTitle }) => {
       const article = document.createElement("article");
       const yearNode = document.createElement("p");
       const body = document.createElement("div");
@@ -168,6 +168,10 @@
       typeNode.className = "presentation-type";
       typeNode.textContent = type;
       heading.textContent = title;
+      if (fullTitle) {
+        heading.title = fullTitle;
+        heading.setAttribute("aria-label", fullTitle);
+      }
       body.append(typeNode, heading);
       article.append(yearNode, body);
       container.append(article);

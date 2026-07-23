@@ -3,13 +3,13 @@ window.PROFILE_CONTENT = {
   shortName: "Salmon YHH",
   role: "PGY-1 Resident Physician · Taipei Veterans General Hospital",
   summary:
-    "I am a physician and researcher working across clinical data, medical AI, public health, and digital health interventions.",
+    "Physician-researcher building practical systems for clinical data, medical AI, and evidence synthesis.",
   currentFocus:
-    "Building practical research systems that connect clinical questions, data, and verifiable evidence.",
+    "Connecting clinical questions, data, and verifiable evidence.",
   workingStatement:
     "Good research systems do not hide uncertainty. They make it easier to inspect, challenge, and update.",
   contactText:
-    "I welcome collaborations in clinical data analysis, medical AI, evidence synthesis, occupational health, and digital health.",
+    "Open to collaborations in clinical data, medical AI, evidence synthesis, occupational health, and digital health.",
   facts: [
     { label: "Current", value: "TVGH · PGY-1" },
     { label: "Training", value: "NYCU Medicine" },
@@ -17,6 +17,10 @@ window.PROFILE_CONTENT = {
   ],
   links: [
     { label: "GitHub", href: "https://github.com/YHHuan" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/yen-hsun-huang-4866a51bb/",
+    },
     { label: "Publications", href: "#publications" },
   ],
   researchThemes: [
@@ -24,19 +28,19 @@ window.PROFILE_CONTENT = {
       number: "A",
       title: "Clinical data and medical AI",
       description:
-        "Dry-lab analysis, predictive modeling, and clinically grounded evaluation of AI systems, from ECG-based risk prediction to geriatric digital assessment.",
+        "Clinical prediction and local evaluation of AI in real workflows.",
     },
     {
       number: "B",
       title: "Brain, behavior, and healthy aging",
       description:
-        "EEG, movement, memory retrieval, social interaction, and longitudinal interventions that connect physiology with meaningful human outcomes.",
+        "EEG, memory, movement, and longitudinal healthy-aging interventions.",
     },
     {
       number: "C",
       title: "Public, occupational, and digital health",
       description:
-        "Human-centered training, workplace safety, population health, and digital interventions designed around real clinical and organizational needs.",
+        "Human-centered interventions built around clinical and organizational needs.",
     },
   ],
   publications: [
@@ -94,7 +98,7 @@ window.PROFILE_CONTENT = {
       year: "Research",
       title: "ECG-based Pulmonary Embolism Prediction",
       description:
-        "Python-based model development with the Emergency Department at Taipei Veterans General Hospital, presented at an emergency medicine annual meeting.",
+        "Python model development with the TVGH Emergency Department, presented at an emergency medicine annual meeting.",
       methods: ["ECG", "Machine learning", "Clinical prediction"],
     },
     {
@@ -102,7 +106,7 @@ window.PROFILE_CONTENT = {
       year: "Longitudinal study",
       title: "Social Dance, Memory, and EEG",
       description:
-        "Contributed from study design and recruitment through analysis of EEG complexity, functional connectivity, physical fitness, social interaction, and memory retrieval.",
+        "Study design through longitudinal EEG, physical, social, and memory-outcome analysis.",
       methods: ["EEG", "Behavioral outcomes", "Longitudinal analysis"],
       href: "https://github.com/YHHuan/Dance_EEG_project",
     },
@@ -111,7 +115,7 @@ window.PROFILE_CONTENT = {
       year: "Open source",
       title: "LUMEN",
       description:
-        "A cost-transparent multi-agent pipeline for literature search, screening, extraction, deterministic meta-analysis, and source-bound quality checks.",
+        "Cost-transparent literature search, screening, extraction, meta-analysis, and source-bound QA.",
       methods: ["Evidence synthesis", "Multi-agent evaluation", "Cost analysis"],
       href: "https://github.com/YHHuan/LUMEN",
     },
@@ -120,7 +124,7 @@ window.PROFILE_CONTENT = {
       year: "iGEM 2020 · Gold Medal",
       title: "NYMU-Taipei",
       description:
-        "Wet-lab design for an engineered E. coli system producing a protease intended to reduce environmental persistence of SARS-CoV-2 spike protein.",
+        "Wet-lab design of an engineered E. coli protease system targeting SARS-CoV-2 spike protein.",
       methods: ["Wet lab", "Genetic engineering", "Team science"],
       href: "https://2020.igem.org/Team:NYMU-Taipei/Description",
     },
@@ -147,19 +151,22 @@ window.PROFILE_CONTENT = {
     {
       year: "2026",
       type: "Poster · Healthy Taiwan",
-      title:
+      title: "Wearable AR eye tracking for geriatric cognitive and psychiatric assessment",
+      fullTitle:
         "Validating Wearable Augmented Reality Eye Tracking for Cognitive and Psychiatric Assessment in Geriatric Inpatients: A Session-Level Analysis",
     },
     {
       year: "2025",
       type: "Poster · Society for Neuroscience",
-      title:
+      title: "Social dance training, memory retrieval, and task-based EEG",
+      fullTitle:
         "Move the body, work the mind, connect with people: Sixteen weeks of social dance training enhanced healthy elderly adults' physical fitness, social interaction, dance-related memory retrieval, and altered task-based EEG complexity and functional connectivity",
     },
     {
       year: "2025",
       type: "Invited lecturer",
-      title:
+      title: "Advanced Neurofeedback Workshop: Brain function and neuroanatomy",
+      fullTitle:
         "Advanced Neurofeedback and Applications Workshop · Fundamentals of brain function and neuroanatomy",
     },
     {
@@ -175,5 +182,9 @@ window.PROFILE_CONTENT = {
   ],
   contactLinks: [
     { label: "GitHub", href: "https://github.com/YHHuan" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/yen-hsun-huang-4866a51bb/",
+    },
   ],
 };

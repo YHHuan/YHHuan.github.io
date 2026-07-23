@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f6f4ef">
+    <meta name="theme-color" content="#163f3a">
     <meta
       name="description"
       content="Yen-Hsun Huang is a resident physician and researcher working across clinical data, medical AI, public health, and digital health."
@@ -14,8 +14,15 @@
       property="og:description"
       content="Clinical data, medical AI, public health, and digital health interventions."
     >
+    <meta
+      property="og:image"
+      content="https://yhhuan.github.io/assets/yen-hsun-huang.webp"
+    >
+    <meta property="og:image:alt" content="Portrait of Yen-Hsun Huang">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Yen-Hsun Huang, M.D. | Research</title>
     <link rel="icon" href="assets/salmon-mark.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/yen-hsun-huang.webp" as="image" type="image/webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -44,6 +51,14 @@
 
     <main id="main">
       <section class="hero" id="top" aria-labelledby="hero-title">
+        <img
+          class="hero-photo"
+          src="assets/yen-hsun-huang.webp"
+          alt="Portrait of Yen-Hsun Huang"
+          width="1800"
+          height="2252"
+          fetchpriority="high"
+        >
         <div class="hero-main">
           <p class="eyebrow" data-content="role">
             PGY-1 Resident Physician · Taipei Veterans General Hospital
@@ -85,6 +100,15 @@
           </div>
         </div>
         <div class="publication-list" id="publications-list"></div>
+        <div class="subsection-heading">
+          <p class="section-label">Selected appearances</p>
+          <h3 id="presentations-title">Presentations &amp; recognition</h3>
+        </div>
+        <div
+          class="presentation-list"
+          id="presentations-list"
+          aria-labelledby="presentations-title"
+        ></div>
       </section>
 
       <section class="section" id="work" aria-labelledby="work-title">
@@ -116,17 +140,9 @@
         </div>
       </section>
 
-      <section class="section" id="presentations" aria-labelledby="presentations-title">
-        <div class="section-heading">
-          <p class="section-index">05</p>
-          <h2 id="presentations-title">Presentations &amp; recognition</h2>
-        </div>
-        <div class="presentation-list" id="presentations-list"></div>
-      </section>
-
       <section class="section questions-section" aria-labelledby="questions-title">
         <div class="section-heading">
-          <p class="section-index">06</p>
+          <p class="section-index">05</p>
           <h2 id="questions-title">Questions in progress</h2>
         </div>
         <ol class="question-list" id="questions"></ol>
