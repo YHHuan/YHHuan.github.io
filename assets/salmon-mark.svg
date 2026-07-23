@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Salmon profile mark</title>
+  <path
+    fill="#cc665b"
+    d="M8 32c10-12 22-18 38-16l10-8-2 14 6 10-6 10 2 14-10-8C30 50 18 44 8 32Z"
+  />
+  <path
+    fill="none"
+    stroke="#f6f4ef"
+    stroke-linecap="round"
+    stroke-width="3"
+    d="M17 32c8-7 17-10 28-9M17 32c8 7 17 10 28 9M26 24c4 5 4 11 0 16"
+  />
+  <circle cx="48" cy="29" r="2" fill="#1d211f"/>
+</svg>
