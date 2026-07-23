@@ -112,37 +112,32 @@ button:focus-visible {
 }
 
 .hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(0, 700px);
-  align-content: start;
-  gap: 24px;
-  width: 100%;
-  min-height: min(700px, calc(100svh - 72px));
+  grid-template-areas:
+    "main photo"
+    "note photo";
+  grid-template-columns: minmax(0, 700px) 156px;
+  gap: 24px clamp(32px, 6vw, 80px);
+  align-items: start;
+  width: min(100%, var(--content-width));
   margin: 0 auto;
-  padding: 72px max(var(--gutter), calc((100vw - var(--content-width)) / 2 + var(--gutter))) 46px;
-  color: #fff;
+  padding: 64px var(--gutter) 58px;
 }
 
-.hero::after {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  content: "";
-  background: rgba(8, 31, 31, 0.46);
+.hero-main {
+  grid-area: main;
 }
 
-.hero-photo {
-  position: absolute;
-  z-index: -2;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.profile-photo {
+  grid-area: photo;
+  width: 156px;
+  height: 156px;
+  aspect-ratio: 1;
+  margin-top: 20px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
   object-fit: cover;
-  object-position: center 42%;
-  transform: translateX(11%) scale(1.28);
+  object-position: center;
 }
 
 .eyebrow,
@@ -204,9 +199,10 @@ button:focus-visible {
 }
 
 .field-note {
+  grid-area: note;
   max-width: 700px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.48);
+  border-top: 1px solid var(--rule);
 }
 
 .field-note > p:not(.section-label) {
@@ -236,20 +232,11 @@ button:focus-visible {
 }
 
 .profile-facts dt {
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--muted);
 }
 
 .profile-facts dd {
   font-weight: 500;
-}
-
-.hero .eyebrow,
-.hero .section-label {
-  color: #ffd0c9;
-}
-
-.hero .text-link::after {
-  color: #ffd0c9;
 }
 
 .section {
@@ -367,7 +354,7 @@ button:focus-visible {
 
 .project-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   margin-left: 56px;
   border-top: 1px solid var(--rule);
 }
@@ -443,7 +430,7 @@ button:focus-visible {
   border-bottom: 1px solid var(--rule);
 }
 
-.project:nth-child(4n) {
+.project:nth-child(5n) {
   border-right: 0;
 }
 
@@ -648,9 +635,13 @@ blockquote p {
 
 @media (max-width: 860px) {
   .hero {
-    grid-template-columns: 1fr;
-    min-height: min(680px, calc(100svh - 72px));
+    grid-template-columns: minmax(0, 1fr) 128px;
     padding-top: 58px;
+  }
+
+  .profile-photo {
+    width: 128px;
+    height: 128px;
   }
 
   .hero h1 {
@@ -748,19 +739,19 @@ blockquote p {
   }
 
   .hero {
+    grid-template-areas:
+      "main photo"
+      "note note";
+    grid-template-columns: minmax(0, 1fr) 92px;
     gap: 18px;
-    min-height: 650px;
     padding-top: 44px;
-    padding-bottom: 32px;
+    padding-bottom: 40px;
   }
 
-  .hero::after {
-    background: rgba(8, 31, 31, 0.52);
-  }
-
-  .hero-photo {
-    object-position: center 40%;
-    transform: translateY(28%) scale(1.6);
+  .profile-photo {
+    width: 92px;
+    height: 92px;
+    margin-top: 18px;
   }
 
   .hero h1 {

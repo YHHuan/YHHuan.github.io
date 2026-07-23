@@ -40,7 +40,7 @@ window.PROFILE_CONTENT = {
       number: "C",
       title: "Public, occupational, and digital health",
       description:
-        "Human-centered interventions built around clinical and organizational needs.",
+        "Wearable sensing and human-centered interventions built around clinical and organizational needs.",
     },
   ],
   publications: [
@@ -93,6 +93,14 @@ window.PROFILE_CONTENT = {
     },
   ],
   projects: [
+    {
+      type: "Occupational health",
+      year: "Ongoing collaboration",
+      title: "Firefighter Cardiovascular Health",
+      description:
+        "Collaboration with the Taoyuan City Fire Department (桃園市政府消防局), combining CGM and Garmin wearable data to characterize cardiovascular and metabolic health in firefighters.",
+      methods: ["CGM", "Garmin wearables", "Cardiometabolic health"],
+    },
     {
       type: "Clinical AI",
       year: "Research",
@@ -150,10 +158,10 @@ window.PROFILE_CONTENT = {
   presentations: [
     {
       year: "2026",
-      type: "Poster · Healthy Taiwan",
+      type: "海報 · 健康台灣深耕計畫多元人才培訓全國論壇",
       title: "Wearable AR eye tracking for geriatric cognitive and psychiatric assessment",
       fullTitle:
-        "Validating Wearable Augmented Reality Eye Tracking for Cognitive and Psychiatric Assessment in Geriatric Inpatients: A Session-Level Analysis",
+        "Validating Wearable Augmented Reality (AR) Eye Tracking for Cognitive and Psychiatric Assessment in Geriatric Inpatients: A Session-Level Analysis",
     },
     {
       year: "2025",
@@ -164,10 +172,10 @@ window.PROFILE_CONTENT = {
     },
     {
       year: "2025",
-      type: "Invited lecturer",
-      title: "Advanced Neurofeedback Workshop: Brain function and neuroanatomy",
+      type: "講師 · 神經回饋進階與應用工作坊",
+      title: "大腦基本功能介紹及腦區介紹",
       fullTitle:
-        "Advanced Neurofeedback and Applications Workshop · Fundamentals of brain function and neuroanatomy",
+        "2025 神經回饋進階與應用工作坊 · 大腦基本功能介紹及腦區介紹",
     },
     {
       year: "2020",
@@ -177,7 +185,7 @@ window.PROFILE_CONTENT = {
   ],
   questions: [
     "How can clinical AI be evaluated against workflow, local population, and patient-relevant outcomes rather than benchmark performance alone?",
-    "Which digital interventions produce durable behavioral or physiologic changes in real clinical settings?",
+    "How can CGM and wearable signals be combined to study cardiometabolic risk and recovery in safety-critical work?",
     "How can evidence synthesis remain transparent, reproducible, and affordable as the literature grows?",
   ],
   contactLinks: [
