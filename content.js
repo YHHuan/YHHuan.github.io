@@ -175,6 +175,5 @@ window.PROFILE_CONTENT = {
   ],
   contactLinks: [
     { label: "GitHub", href: "https://github.com/YHHuan" },
-    { label: "Email", href: "mailto:michaelyhhuang@gmail.com" },
   ],
 };
