@@ -75,7 +75,9 @@
       const heading = document.createElement("h3");
       const descriptionNode = document.createElement("p");
       const tags = document.createElement("ul");
-      const link = makeLink({ label: "View project", href }, "project-link");
+      const link = href
+        ? makeLink({ label: "View project", href }, "project-link")
+        : null;
 
       article.className = "project";
       meta.className = "project-meta";
@@ -95,7 +97,36 @@
 
       meta.append(typeLabel, yearLabel);
       body.append(heading, descriptionNode, tags);
-      article.append(meta, body, link);
+      article.append(meta, body);
+      if (link) {
+        article.append(link);
+      }
+      container.append(article);
+    });
+  };
+
+  const renderPublications = () => {
+    const container = document.querySelector("#publications-list");
+    content.publications.forEach(({ status, title, authors, venue, href }) => {
+      const article = document.createElement("article");
+      const statusNode = document.createElement("p");
+      const body = document.createElement("div");
+      const heading = document.createElement("h3");
+      const citation = document.createElement("p");
+
+      article.className = "publication";
+      statusNode.className = "publication-status";
+      statusNode.textContent = status;
+      body.className = "publication-body";
+      heading.textContent = title;
+      citation.textContent = `${authors} ${venue}`;
+      body.append(heading, citation);
+      article.append(statusNode, body);
+
+      if (href) {
+        article.append(makeLink({ label: "Source", href }, "project-link"));
+      }
+
       container.append(article);
     });
   };
@@ -122,12 +153,35 @@
     });
   };
 
+  const renderPresentations = () => {
+    const container = document.querySelector("#presentations-list");
+    content.presentations.forEach(({ year, type, title }) => {
+      const article = document.createElement("article");
+      const yearNode = document.createElement("p");
+      const body = document.createElement("div");
+      const typeNode = document.createElement("p");
+      const heading = document.createElement("h3");
+
+      article.className = "presentation";
+      yearNode.className = "presentation-year";
+      yearNode.textContent = year;
+      typeNode.className = "presentation-type";
+      typeNode.textContent = type;
+      heading.textContent = title;
+      body.append(typeNode, heading);
+      article.append(yearNode, body);
+      container.append(article);
+    });
+  };
+
   setTextContent();
   renderFacts();
   renderLinks("#hero-links", content.links, "text-link");
   renderThemes();
+  renderPublications();
   renderProjects();
   renderMethods();
+  renderPresentations();
   renderQuestions();
   renderLinks("#contact-links", content.contactLinks, "contact-link");
   document.querySelector("#current-year").textContent = new Date().getFullYear();

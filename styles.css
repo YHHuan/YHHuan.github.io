@@ -306,6 +306,46 @@ button:focus-visible {
   border-top: 1px solid var(--rule);
 }
 
+.publication-list,
+.presentation-list {
+  margin-left: 80px;
+  border-top: 1px solid var(--rule);
+}
+
+.publication {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr) 80px;
+  gap: 28px;
+  align-items: start;
+  padding: 28px 0 32px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.publication-status,
+.presentation-year,
+.presentation-type {
+  margin: 0;
+  color: var(--salmon-dark);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.publication-body h3,
+.presentation h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.publication-body p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .project {
   display: grid;
   grid-template-columns: 132px minmax(0, 1fr) 110px;
@@ -349,6 +389,18 @@ button:focus-visible {
 .project-link {
   justify-self: end;
   white-space: nowrap;
+}
+
+.presentation {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: 28px;
+  padding: 28px 0 32px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.presentation-type {
+  margin-bottom: 8px;
 }
 
 .approach-grid {
@@ -495,6 +547,15 @@ blockquote p {
     grid-template-columns: 112px minmax(0, 1fr);
   }
 
+  .publication {
+    grid-template-columns: 112px minmax(0, 1fr);
+  }
+
+  .publication .project-link {
+    grid-column: 2;
+    justify-self: start;
+  }
+
   .project-link {
     grid-column: 2;
     justify-self: start;
@@ -599,8 +660,10 @@ blockquote p {
   }
 
   .theme-list,
+  .publication-list,
   .project-list,
   .approach-grid,
+  .presentation-list,
   .question-list {
     margin-left: 0;
   }
@@ -619,8 +682,22 @@ blockquote p {
     gap: 18px;
   }
 
+  .publication {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .project-link {
     grid-column: 1;
+  }
+
+  .publication .project-link {
+    grid-column: 1;
+  }
+
+  .presentation {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 18px;
   }
 
   .methods {

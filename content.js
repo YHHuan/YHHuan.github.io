@@ -1,97 +1,180 @@
 window.PROFILE_CONTENT = {
-  name: "Michael Y. H. Huang",
+  name: "Yen-Hsun Huang, M.D.",
   shortName: "Salmon YHH",
-  role: "Resident physician and clinical research builder",
+  role: "PGY-1 Resident Physician · Taipei Veterans General Hospital",
   summary:
-    "I study how clinical evidence, data systems, and responsible AI can make medical decisions more reliable.",
+    "I am a physician and researcher working across clinical data, medical AI, public health, and digital health interventions.",
   currentFocus:
-    "Making every research claim traceable to its source, context, and uncertainty.",
+    "Building practical research systems that connect clinical questions, data, and verifiable evidence.",
   workingStatement:
     "Good research systems do not hide uncertainty. They make it easier to inspect, challenge, and update.",
   contactText:
-    "I am interested in clinical evidence synthesis, research tooling, and responsible evaluation of health AI.",
+    "I welcome collaborations in clinical data analysis, medical AI, evidence synthesis, occupational health, and digital health.",
   facts: [
+    { label: "Current", value: "TVGH · PGY-1" },
+    { label: "Training", value: "NYCU Medicine" },
     { label: "Based in", value: "Taipei, Taiwan" },
-    { label: "Fields", value: "Medicine · Evidence · AI" },
-    { label: "Updated", value: "July 2026" },
   ],
   links: [
     { label: "GitHub", href: "https://github.com/YHHuan" },
-    { label: "Research notes", href: "#work" },
+    { label: "Publications", href: "#publications" },
   ],
   researchThemes: [
     {
       number: "A",
-      title: "Evidence that can be audited",
+      title: "Clinical data and medical AI",
       description:
-        "Evidence synthesis, citation verification, and study-family tracking that keep conclusions linked to the exact papers, pages, and limitations behind them.",
+        "Dry-lab analysis, predictive modeling, and clinically grounded evaluation of AI systems, from ECG-based risk prediction to geriatric digital assessment.",
     },
     {
       number: "B",
-      title: "Responsible clinical AI",
+      title: "Brain, behavior, and healthy aging",
       description:
-        "Local validation, workflow fit, governance, and lifecycle monitoring for medical AI after the demo and before routine care.",
+        "EEG, movement, memory retrieval, social interaction, and longitudinal interventions that connect physiology with meaningful human outcomes.",
     },
     {
       number: "C",
-      title: "Brain, behavior, and healthy aging",
+      title: "Public, occupational, and digital health",
       description:
-        "EEG, movement, memory retrieval, and longitudinal interventions that connect measurable physiology with meaningful human outcomes.",
+        "Human-centered training, workplace safety, population health, and digital interventions designed around real clinical and organizational needs.",
+    },
+  ],
+  publications: [
+    {
+      status: "Preprint · 2026",
+      title:
+        "LUMEN: Cost-Transparent Multi-Agent Pipeline for Automated Systematic Review and Meta-Analysis",
+      authors: "Huang YH et al.",
+      venue: "arXiv:2606.28362 [cs.IR]",
+      href: "https://arxiv.org/abs/2606.28362",
+    },
+    {
+      status: "Published · 2026",
+      title:
+        "Efficacy of CPAP Therapy on Liver Steatosis and Insulin Resistance in Fatty Liver Patients With Obstructive Sleep Apnea: A 4-Year Follow-Up Cohort Study",
+      authors: "Shen HC, Huang YH, et al.",
+      venue: "The Kaohsiung Journal of Medical Sciences · Advance online publication",
+      href: "https://doi.org/10.1002/kjm2.70222",
+    },
+    {
+      status: "Published · 2024",
+      title:
+        "Models incorporating physical, laboratory and gut metabolite markers can be used to predict severe hepatic steatosis in MAFLD patients",
+      authors: "Lin YH, Wang CH, Huang YH, et al.",
+      venue: "The Kaohsiung Journal of Medical Sciences · 40(12):1095–1105",
+      href: "https://doi.org/10.1002/kjm2.12904",
+    },
+    {
+      status: "Published · 2024",
+      title:
+        "The dissemination of holistic health care and evidence-based medicine courses from institution-based to department-based via a course management system",
+      authors: "Chung CJ, Huang YH, Yang JC, et al.",
+      venue: "Interactive Learning Environments · 32(8):4138–4153",
+      href: "https://doi.org/10.1080/10494820.2023.2194932",
+    },
+    {
+      status: "Published · 2023",
+      title:
+        "Feasibility and Accessibility of Human-centered AI-based Simulation System for Improving the Occupational Safety of Clinical Workplace",
+      authors: "Wang PH, Huang AYQ, Huang YH, et al.",
+      venue: "Educational Technology & Society · 26(1):160–170",
+      href: "https://doi.org/10.30191/ETS.202301_26(1).0012",
+    },
+    {
+      status: "Under review",
+      title:
+        "The effects of 16-week social dance training on cognitive resilience, social interaction, and memory retrieval in healthy elderly: a longitudinal EEG study",
+      authors: "Huang YH et al.",
+      venue: "Manuscript under review",
     },
   ],
   projects: [
     {
-      type: "Study",
-      year: "Ongoing",
-      title: "Social Dance Intervention and EEG",
+      type: "Clinical AI",
+      year: "Research",
+      title: "ECG-based Pulmonary Embolism Prediction",
       description:
-        "A longitudinal analysis of neural complexity, functional connectivity, memory retrieval, and dance performance in older adults.",
-      methods: ["EEG", "Longitudinal study", "Permutation testing"],
-      href: "https://github.com/YHHuan/Dance_EEG_project",
+        "Python-based model development with the Emergency Department at Taipei Veterans General Hospital, presented at an emergency medicine annual meeting.",
+      methods: ["ECG", "Machine learning", "Clinical prediction"],
     },
     {
-      type: "Research tool",
-      year: "Open source",
-      title: "Citation FactCheck",
+      type: "Neuroscience",
+      year: "Longitudinal study",
+      title: "Social Dance, Memory, and EEG",
       description:
-        "A claim-grounded workflow that retrieves source passages before judging whether a manuscript citation supports the statement attached to it.",
-      methods: ["Evidence spans", "Hybrid retrieval", "Review QA"],
-      href: "https://github.com/YHHuan/Citation_FactCheck",
+        "Contributed from study design and recruitment through analysis of EEG complexity, functional connectivity, physical fitness, social interaction, and memory retrieval.",
+      methods: ["EEG", "Behavioral outcomes", "Longitudinal analysis"],
+      href: "https://github.com/YHHuan/Dance_EEG_project",
     },
     {
       type: "Research system",
       year: "Open source",
       title: "LUMEN",
       description:
-        "An experimental evidence-synthesis pipeline for literature search, screening, extraction, deterministic analysis, and source-bound quality checks.",
-      methods: ["Systematic review", "Reproducible pipeline", "Provenance"],
+        "A cost-transparent multi-agent pipeline for literature search, screening, extraction, deterministic meta-analysis, and source-bound quality checks.",
+      methods: ["Evidence synthesis", "Multi-agent evaluation", "Cost analysis"],
       href: "https://github.com/YHHuan/LUMEN",
+    },
+    {
+      type: "Synthetic biology",
+      year: "iGEM 2020 · Gold Medal",
+      title: "NYMU-Taipei",
+      description:
+        "Wet-lab design for an engineered E. coli system producing a protease intended to reduce environmental persistence of SARS-CoV-2 spike protein.",
+      methods: ["Wet lab", "Genetic engineering", "Team science"],
+      href: "https://2020.igem.org/Team:NYMU-Taipei/Description",
     },
   ],
   methods: [
     {
-      title: "Evidence synthesis",
-      text: "Search design, screening, structured extraction, risk-aware interpretation, and claim-to-source review.",
+      title: "Programming",
+      text: "Python; working knowledge of C; reading and basic operation in R and SAS.",
     },
     {
-      title: "Research software",
-      text: "Reproducible pipelines, data contracts, provenance ledgers, regression tests, and human review gates.",
+      title: "Modeling and analysis",
+      text: "Machine learning, deep learning, clinical prediction, reproducible data pipelines, and evidence synthesis.",
     },
     {
-      title: "Clinical and signal data",
-      text: "Longitudinal clinical questions, EEG feature analysis, robust statistics, and explicit data-quality checks.",
+      title: "Statistics and signals",
+      text: "SPSS, GraphPad Prism, longitudinal analysis, EEG complexity, connectivity, and robust statistical checks.",
     },
     {
-      title: "Implementation",
-      text: "Workflow observation, local validation, outcome definition, monitoring, and retirement criteria for health AI.",
+      title: "Research interests",
+      text: "Dry-lab research, medical AI, occupational medicine, public health, and digital health interventions.",
+    },
+  ],
+  presentations: [
+    {
+      year: "2026",
+      type: "Poster · Healthy Taiwan",
+      title:
+        "Validating Wearable Augmented Reality Eye Tracking for Cognitive and Psychiatric Assessment in Geriatric Inpatients: A Session-Level Analysis",
+    },
+    {
+      year: "2025",
+      type: "Poster · Society for Neuroscience",
+      title:
+        "Move the body, work the mind, connect with people: Sixteen weeks of social dance training enhanced healthy elderly adults' physical fitness, social interaction, dance-related memory retrieval, and altered task-based EEG complexity and functional connectivity",
+    },
+    {
+      year: "2025",
+      type: "Invited lecturer",
+      title:
+        "Advanced Neurofeedback and Applications Workshop · Fundamentals of brain function and neuroanatomy",
+    },
+    {
+      year: "2020",
+      type: "Recognition",
+      title: "iGEM Competition · Gold Medal · Team NYMU-Taipei",
     },
   ],
   questions: [
-    "How can a long review preserve study families, negative results, and uncertainty without losing readability?",
-    "Which health-AI benefits remain after local validation, workflow costs, and model updates are counted?",
-    "Can provenance and verification become the default interface of research rather than a final manual audit?",
+    "How can clinical AI be evaluated against workflow, local population, and patient-relevant outcomes rather than benchmark performance alone?",
+    "Which digital interventions produce durable behavioral or physiologic changes in real clinical settings?",
+    "How can evidence synthesis remain transparent, reproducible, and affordable as the literature grows?",
   ],
   contactLinks: [
     { label: "GitHub", href: "https://github.com/YHHuan" },
+    { label: "Email", href: "mailto:michaelyhhuang@gmail.com" },
   ],
 };
