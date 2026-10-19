@@ -1,102 +1,66 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, access } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 import vm from "node:vm";
 
 const root = new URL("../", import.meta.url);
-const requiredFiles = [
-  "index.html",
-  "styles.css",
-  "content.js",
-  "script.js",
-  "assets/salmon-mark.svg",
-  "assets/yen-hsun-huang-avatar.webp",
-  "404.html",
-  "robots.txt",
-  "sitemap.xml",
-];
+execFileSync(process.execPath, [new URL("scripts/build.mjs", root).pathname, "--check"], {stdio: "inherit"});
+const pages = ["index.html", "research.html", "publications.html", "conferences.html", "experience.html"];
+const html = Object.fromEntries(await Promise.all(pages.map(async (f) => [f, await readFile(new URL(f, root), "utf8")])));
+const source = await readFile(new URL("content.js", root), "utf8");
+const context = {window: {}};
+vm.runInNewContext(source, context);
+const c = context.window.PROFILE_CONTENT;
+const sitemap = await readFile(new URL("sitemap.xml", root), "utf8");
+const count = (str, pattern) => [...str.matchAll(pattern)].length;
 
-const files = Object.fromEntries(
-  await Promise.all(
-    requiredFiles.map(async (path) => [
-      path,
-      await readFile(new URL(path, root), "utf8"),
-    ]),
-  ),
-);
+assert.equal(c.publications.filter((p) => p.category === "published").length, 5);
+assert.equal(c.publications.filter((p) => p.category === "preprints").length, 1);
+assert.equal(c.publications.filter((p) => p.category === "in-progress").length, 3);
+assert.equal(new Set(c.publications.map((p) => p.title)).size, c.publications.length);
+assert.equal(new Set(c.publications.filter((p) => p.doi).map((p) => p.doi)).size, 6);
+assert.match(c.role, /PGY-2/);
+assert.match(c.nextStep, /Expected September 2027/);
+assert.ok(!/PhD candidate|Ph\.D\.,|PGY-1|under review|Pulmonary Embolism/i.test(source));
+assert.match(c.publications.find((p) => p.id === "dance-eeg").venue, /not yet submitted/);
+assert.equal(c.publications.find((p) => p.id === "smart-glasses").doi, "10.3352/jeehp.2022.19.25");
+assert.match(c.publications.find((p) => p.id === "lumen").authors, /Huang YH, Lin YS/);
+assert.match(c.presentations.find((p) => p.venue === "ASPA 2026").authors, /Huang YH, Chiang IC, Hsu CH, Wong WL/);
+assert.match(c.presentations.find((p) => p.venue === "ICOH 2027").note, /not yet presented/);
+assert.ok(c.projects.some((p) => p.id === "firefighters" && p.methods.includes("CGM")));
+assert.ok(c.awards.some((a) => a.organization.includes("NCMEA")));
+assert.ok(c.activities.some((a) => a.organization.includes("popular music club")));
 
-const context = { window: {} };
-vm.runInNewContext(files["content.js"], context);
-const profile = context.window.PROFILE_CONTENT;
-
-assert.ok(profile, "content.js must define PROFILE_CONTENT");
-assert.match(profile.name, /\S+/, "profile name is required");
-assert.ok(profile.researchThemes.length >= 3, "at least three research themes are required");
-assert.ok(profile.publications.length >= 5, "at least five publications are required");
-assert.ok(profile.projects.length >= 5, "at least five selected projects are required");
-assert.ok(profile.methods.length >= 3, "at least three method areas are required");
-assert.ok(profile.presentations.length >= 3, "at least three presentations are required");
-assert.ok(profile.questions.length >= 3, "at least three current questions are required");
-assert.ok(
-  profile.links.some(
-    ({ href }) => href === "https://www.linkedin.com/in/yen-hsun-huang-4866a51bb/",
-  ),
-  "LinkedIn must be available from the hero",
-);
-assert.ok(
-  files["index.html"].includes('src="assets/yen-hsun-huang-avatar.webp"'),
-  "portrait must be rendered in the hero",
-);
-assert.ok(
-  profile.projects.some(
-    ({ title, description, methods }) =>
-      title === "Firefighter Cardiovascular Health" &&
-      description.includes("桃園市政府消防局") &&
-      methods.includes("CGM") &&
-      methods.includes("Garmin wearables"),
-  ),
-  "firefighter cardiovascular health collaboration must be represented",
-);
-assert.ok(
-  profile.presentations.some(({ type }) =>
-    type.includes("健康台灣深耕計畫多元人才培訓全國論壇"),
-  ),
-  "Healthy Taiwan forum should retain its official Chinese name",
-);
-assert.ok(
-  profile.presentations.some(
-    ({ type, title }) =>
-      type.includes("神經回饋進階與應用工作坊") &&
-      title === "大腦基本功能介紹及腦區介紹",
-  ),
-  "Chinese workshop and talk names should retain their official wording",
-);
-
-for (const project of profile.projects) {
-  assert.match(project.title, /\S+/);
-  assert.match(project.description, /\S+/);
-  if (project.href?.includes("github.com")) {
-    assert.match(project.href, /^https:\/\/github\.com\/YHHuan\//);
+for (const file of pages) {
+  const doc = html[file];
+  assert.equal(count(doc, /<h1[\s>]/g), 1, `${file}: one h1`);
+  assert.equal(count(doc, /aria-current="page"/g), 1, `${file}: one current nav item`);
+  assert.ok(doc.includes(`href="${file}" aria-current="page"`));
+  assert.match(doc, /<main id="main" tabindex="-1">/);
+  assert.match(doc, /<link rel="canonical"/);
+  assert.match(doc, /<meta name="description" content="[^"\n]+">/);
+  assert.match(doc, /<html lang="en">/);
+  assert.equal(count(doc, /<nav class="site-nav"/g), 1);
+  const ids = [...doc.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]);
+  assert.equal(new Set(ids).size, ids.length, `${file}: unique IDs`);
+  for (const target of pages) assert.ok(doc.includes(`href="${target}"`), `${file} links to ${target}`);
+  assert.ok(sitemap.includes(`https://yhhuan.github.io/${file === "index.html" ? "" : file}`));
+  for (const m of doc.matchAll(/(?:href|src)="([^"]+)"/g)) {
+    const url = m[1];
+    if (url.startsWith("https:")) continue;
+    assert.ok(!/^(javascript:|data:|file:|http:)/.test(url), `unsafe URL ${url}`);
+    const [path, fragment] = url.split("#");
+    if (path) await access(new URL(path, root));
+    if (fragment) {
+      assert.ok((html[path || file] || "").includes(`id="${fragment}"`), `broken fragment ${file}: ${url}`);
+    }
   }
+  for (const m of doc.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) assert.match(m[0], /rel="noopener noreferrer"/);
+  assert.ok(!/google-analytics|googletagmanager|plausible|segment\.com|mailto:|tel:|\b09[0-9]{8}\b|在訓證明|推薦信|學年度|碩士班甄試/.test(doc), `${file}: privacy or stale application copy`);
 }
-
-for (const anchor of ["research", "publications", "work", "contact"]) {
-  assert.ok(files["index.html"].includes(`id="${anchor}"`), `missing #${anchor} section`);
-  assert.ok(files["index.html"].includes(`href="#${anchor}"`), `missing #${anchor} nav link`);
-}
-
-for (const leakedIdentity of ["I-Hua Chen", "Michael Y. H. Huang"]) {
-  assert.ok(
-    !files["index.html"].includes(leakedIdentity),
-    `template identity leaked into public page: ${leakedIdentity}`,
-  );
-  assert.ok(
-    !files["content.js"].includes(leakedIdentity),
-    `template identity leaked into content: ${leakedIdentity}`,
-  );
-}
-assert.ok(
-  !files["index.html"].match(/google-analytics|googletagmanager|plausible|segment\.com/i),
-  "analytics must be opt-in, not implicit",
-);
-
-console.log(`Validated ${requiredFiles.length} site files and ${profile.projects.length} projects.`);
+assert.ok(!html["index.html"].includes('class="publication"'), "Home should not repeat the full bibliography");
+assert.ok(html["index.html"].includes('src="assets/yen-hsun-huang-avatar.webp"'));
+assert.equal(count(html["publications.html"], /class="publication"/g), 9, "Content must exist without JS");
+assert.equal(count(html["research.html"], /<details>/g), c.projects.length);
+assert.equal(count(html["conferences.html"], /class="conference"/g), c.presentations.length);
+console.log(`Validated ${pages.length} pages, ${c.publications.length} publication records, ${c.projects.length} projects, links, status and privacy checks.`);
