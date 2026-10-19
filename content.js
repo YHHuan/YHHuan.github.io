@@ -7,7 +7,7 @@ window.PROFILE_CONTENT = {
   role: "PGY-2 Resident Physician · Taipei Veterans General Hospital",
   summary: "I work with clinical data and digital tools to understand health at work and in everyday life.",
   about: "I’m a physician in Taipei who enjoys coding, making sense of data, and working with people from different fields. My research began with neuroscience and synthetic biology during medical school. These days, I’m especially interested in how wearable devices can help us understand work, fatigue, and recovery.",
-  nextStep: "Expected September 2027 · PhD studies, Institute of Health and Welfare, National Yang Ming Chiao Tung University",
+  nextStep: "Expected September 2027 · PhD studies, Institute of Health and Welfare Policy, National Yang Ming Chiao Tung University",
   nextStepChinese: "預計 2027 年 9 月入學國立陽明交通大學衛生福利研究所博士班",
   personal: "Outside medicine, I like films, novels, live music, and being in the water. I’m usually happy to try a new activity—or hear someone’s story.",
   links: [
@@ -16,7 +16,7 @@ window.PROFILE_CONTENT = {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/yen-hsun-huang-4866a51bb/" },
   ],
   education: [
-    { date: "2027/09 · Expected", title: "PhD studies · Institute of Health and Welfare", organization: "National Yang Ming Chiao Tung University", note: "預計 2027 年 9 月入學衛生福利研究所博士班。" },
+    { date: "2027/09 · Expected", title: "PhD studies · Institute of Health and Welfare Policy", organization: "National Yang Ming Chiao Tung University", note: "預計 2027 年 9 月入學衛生福利研究所博士班。" },
     { date: "2025", title: "Doctor of Medicine (M.D.)", organization: "National Yang Ming Chiao Tung University", note: "國立陽明交通大學醫學系" },
   ],
   experience: [

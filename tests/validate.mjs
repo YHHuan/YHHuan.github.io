@@ -21,6 +21,8 @@ assert.equal(new Set(c.publications.map((p) => p.title)).size, c.publications.le
 assert.equal(new Set(c.publications.filter((p) => p.doi).map((p) => p.doi)).size, 6);
 assert.match(c.role, /PGY-2/);
 assert.match(c.nextStep, /Expected September 2027/);
+assert.match(c.nextStep, /Institute of Health and Welfare Policy/);
+assert.match(c.education[0].title, /Institute of Health and Welfare Policy/);
 assert.ok(!/PhD candidate|Ph\.D\.,|PGY-1|under review|Pulmonary Embolism/i.test(source));
 assert.match(c.publications.find((p) => p.id === "dance-eeg").venue, /not yet submitted/);
 assert.equal(c.publications.find((p) => p.id === "smart-glasses").doi, "10.3352/jeehp.2022.19.25");
