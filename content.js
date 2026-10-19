@@ -9,7 +9,8 @@ window.PROFILE_CONTENT = {
   about: "I’m a physician in Taipei who enjoys coding, making sense of data, and working with people from different fields. My research began with neuroscience and synthetic biology during medical school. These days, I’m especially interested in how wearable devices can help us understand work, fatigue, and recovery.",
   nextStep: "Expected September 2027 · PhD studies, Institute of Health and Welfare Policy, National Yang Ming Chiao Tung University",
   nextStepChinese: "預計 2027 年 9 月入學國立陽明交通大學衛生福利研究所博士班",
-  personal: "Outside medicine, I like films, novels, live music, and being in the water. I’m usually happy to try a new activity—or hear someone’s story.",
+  personal: "Outside medicine, I run, hike, play guitar, and spend time in the water. I also read novels and write about films. I’m usually happy to try a new activity—or hear someone’s story.",
+  personalLink: { label: "Film notes · @shrimpy_thoughts", href: "https://www.instagram.com/shrimpy_thoughts/" },
   links: [
     { label: "Google Scholar", href: "https://scholar.google.com/citations?user=qbsHLXcAAAAJ" },
     { label: "GitHub", href: "https://github.com/YHHuan" },
@@ -21,6 +22,7 @@ window.PROFILE_CONTENT = {
   ],
   experience: [
     { date: "2025/08–present", title: "PGY Resident Physician", organization: "Taipei Veterans General Hospital", note: "Currently in the second year of postgraduate clinical training." },
+    { date: "2024/09–12", title: "Clinical exchange · Anaesthesiology & Neurology", organization: "Royal Melbourne Hospital · Melbourne, Australia", note: "墨爾本交換：麻醉科與神經內科。" },
     { date: "2020–present", title: "Social dance & longitudinal EEG research", organization: "Li-Fen Chen’s laboratory · NYCU", note: "Study-design participation, recruitment support, data analysis, figures, and manuscript writing." },
   ],
   researchThemes: [
@@ -123,16 +125,26 @@ window.PROFILE_CONTENT = {
     { year: "2025", type: "Teaching", venue: "神經回饋進階與應用工作坊", title: "大腦基本功能介紹及腦區介紹" },
   ],
   awards: [
+    { date: "PGY training", title: "Best PGY · Pediatrics", organization: "兒科 Best PGY" },
     { date: "2026", title: "Gold Award · Elite Division", organization: "NCMEA 全國實證醫學類競賽・菁英組金獎" },
+    { date: "Graduation", title: "Best Clerk", organization: "大六畢業 Best Clerk（不分科）" },
     { date: "2020", title: "iGEM Gold Medal · NYMU-Taipei", organization: "International Genetically Engineered Machine competition",
       note: "Team award for a synthetic biology project on engineered E. coli proteases targeting SARS-CoV-2 spike protein. I participated in wet-lab experimental design.", href: "https://2020.igem.org/Team:NYMU-Taipei/Description" },
     { date: "2016–2018", title: "Full scholarship · Wego High School", organization: "臺北市私立薇閣高級中學・全額獎學金" },
   ],
   activities: [
+    { date: "Off duty", title: "Films & writing", organization: "Film notes on Instagram · @shrimpy_thoughts", note: "A place for my film reviews and thoughts on what I watch. During university, I also received an outstanding student award in Academia Sinica’s course on world cinema and modernism（「世界電影與現代主義」課程優良學生獎）.", href: "https://www.instagram.com/shrimpy_thoughts/", linkLabel: "Read my film notes" },
+    { date: "On the move", title: "Running, hiking & the outdoors", organization: "10K races, half marathons, and mountain trails", note: "In 2024: Sydney 10K (46:43), Melbourne half marathon (1:44:14), and second place in my age group at the 風櫃嘴 10K. I also enjoy hiking and being in the water." },
     { date: "Medical school", title: "Music & student life", organization: "Vice president, popular music club", note: "Electric guitar, band performances, and the 2023 medical school arts night." },
-    { date: "2024", title: "Running & the outdoors", organization: "Sydney Marathon; 風櫃嘴馬拉松 10 km age-group second place", note: "Running, swimming, and diving are some of my favourite ways to spend time away from the hospital." },
     { date: "2023", title: "International Medical School Physiology Quiz", organization: "Selected participant · IMSPQ" },
-    { date: "University years", title: "Film & the humanities", organization: "優良學生獎・中研院「世界電影與現代主義」課程" },
+    { date: "2021–2022", title: "A detour into blockchain", organization: "Art & publicity lead · NTUT Blockchain Research Club", note: "北科大區塊鏈研究社美術宣傳部長。" },
+  ],
+  otherSkills: [
+    { title: "Freediving", text: "AIDA 2" },
+    { title: "Scuba diving", text: "Open Water (OW) · Advanced Open Water (AOW)" },
+    { title: "Water safety", text: "Lifeguard certification · 救生員證照" },
+    { title: "On the road", text: "Heavy motorcycle licence · 重機駕照" },
+    { title: "A different kind of class", text: "CBA Level B · 區塊鏈數位轉型商業規劃師" },
   ],
   methods: [
     { title: "Programming", text: "Python; C; reading and basic operation in R and SAS." },

@@ -38,6 +38,8 @@ Common edit locations in `content.js`:
 - `projects`: active and selected research
 - `presentations`: posters, talks, and workshops
 - `education`, `experience`, `awards`, `activities`: training and background
+- `personalLink`: film-writing account, shown only alongside personal interests
+- `otherSkills`: recreational credentials in a closed-by-default disclosure on the experience page
 - `methods`: technical skills and research interests
 - `links`: public profile links
 

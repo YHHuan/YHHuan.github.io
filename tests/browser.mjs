@@ -32,6 +32,23 @@ try {
       report.push({file, ...metrics});
       if ([1440,390].includes(width)) await page.screenshot({path: `${output}/${file}-${width}.png`, fullPage: true});
     }
+    // Recreational qualifications stay understated, but work with a keyboard.
+    assert.equal(await page.locator("#other-skills").getAttribute("open"), null);
+    assert.equal(await page.locator(".extra-skills").isVisible(), false);
+    await page.locator("#other-skills summary").focus();
+    await page.keyboard.press("Enter");
+    assert.equal(await page.locator(".extra-skills").isVisible(), true);
+    assert.equal(await page.locator(".extra-skills dt").count(), 5);
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+    if ([1440,390].includes(width)) await page.locator("#other-skills").screenshot({path: `${output}/other-skills-open-${width}.png`});
+    await page.keyboard.press("Enter");
+    assert.equal(await page.locator(".extra-skills").isVisible(), false);
+    await page.goto(`${base}/index.html`);
+    const filmLink = page.locator(".personal-note").getByRole("link", {name: "Film notes · @shrimpy_thoughts"});
+    assert.equal(await filmLink.getAttribute("href"), "https://www.instagram.com/shrimpy_thoughts/");
+    assert.equal(await filmLink.getAttribute("rel"), "noopener noreferrer");
+    await page.getByRole("link", {name: "More outside medicine"}).click();
+    assert.ok(page.url().endsWith("experience.html#activities"));
     // Real links work without a hamburger or horizontal scrolling on narrow screens.
     await page.getByRole("navigation", {name: "Primary navigation", exact: true}).getByRole("link", {name: "Publications", exact: true}).click();
     assert.ok(page.url().endsWith("publications.html"));
@@ -77,6 +94,9 @@ try {
   assert.equal(await page.locator(".publication:visible").count(), 9);
   await page.getByRole("navigation", {name: "Primary navigation", exact: true}).getByRole("link", {name: "Research", exact: true}).click();
   assert.equal(await page.locator(".project").count(), 8);
+  await page.goto(`${base}/experience.html#activities`);
+  await page.locator("#other-skills summary").click();
+  assert.equal(await page.locator(".extra-skills").isVisible(), true);
   await noJS.close();
   assert.deepEqual(errors, []);
   await writeFile(`${output}/report.json`, JSON.stringify({base, report, errors}, null, 2));
