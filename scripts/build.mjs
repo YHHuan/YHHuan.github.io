@@ -17,7 +17,7 @@ const nav = [
   ["experience.html", "Experience & awards"],
 ];
 const groupHeading = (index, title, id) => `<div class="section-heading"><p class="section-index">${index}</p><h2 id="${id}">${title}</h2></div>`;
-const timeline = (rows) => `<ol class="timeline">${rows.map((r) => `<li><p class="timeline-date">${escape(r.date)}</p><div><h3>${escape(r.title)}</h3><p>${escape(r.organization)}</p>${r.note ? `<p class="muted">${escape(r.note)}</p>` : ""}${r.href ? link("View project", r.href) : ""}</div></li>`).join("\n")}</ol>`;
+const timeline = (rows) => `<ol class="timeline">${rows.map((r) => `<li><p class="timeline-date">${escape(r.date)}</p><div><h3>${escape(r.title)}</h3><p>${escape(r.organization)}</p>${r.note ? `<p class="muted">${escape(r.note)}</p>` : ""}${r.href ? link(r.linkLabel || "View project", r.href) : ""}</div></li>`).join("\n")}</ol>`;
 const pageHeading = (index, title, description) => `<header class="page-heading"><p class="eyebrow">${index} / ${escape(c.chineseName)} · ${escape(c.name)}</p><h1>${title}</h1><p>${description}</p></header>`;
 
 function document(file, title, description, body) {
@@ -82,7 +82,7 @@ const about = `
     <img class="profile-photo" src="assets/yen-hsun-huang-avatar.webp" width="480" height="480" alt="Portrait of Yen-Hsun Huang" fetchpriority="high">
     <aside class="field-note"><p class="section-label">Next chapter</p><p>${escape(c.nextStep)}</p><p class="next-chinese" lang="zh-Hant">${escape(c.nextStepChinese)}</p></aside>
   </section>
-  <section class="section home-about" aria-labelledby="about-title"><div><h2 id="about-title">A little about me</h2><p>${escape(c.about)}</p></div><div class="personal-note"><p class="section-label">Beyond the hospital</p><p>${escape(c.personal)}</p></div></section>
+  <section class="section home-about" aria-labelledby="about-title"><div><h2 id="about-title">A little about me</h2><p>${escape(c.about)}</p></div><div class="personal-note"><p class="section-label">Beyond the hospital</p><p>${escape(c.personal)}</p>${link(c.personalLink.label, c.personalLink.href)}<a class="personal-more" href="experience.html#activities">More outside medicine →</a></div></section>
   <nav class="directory section" aria-label="Explore the profile">${directory.map(([n,t,h,d]) => `<a href="${h}"><span class="section-index">${n}</span><h2>${t}<span aria-hidden="true">↗</span></h2><p>${d}</p></a>`).join("")}</nav>
 `;
 
@@ -106,11 +106,13 @@ const conferences = `${pageHeading("03", "Conferences &amp; teaching", "Conferen
   <section class="section compact-section" aria-label="Conference and teaching record"><ol class="conference-list">${c.presentations.map((p) => `<li class="conference"><p class="timeline-date">${escape(p.year)}</p><div><p class="section-label">${escape(p.type)}</p><h2>${escape(p.title)}</h2><p class="conference-venue">${escape(p.venue)}</p>${p.authors ? `<p class="authors">${authors(p.authors)}</p>` : ""}${p.note ? `<p class="record-note">${escape(p.note)}</p>` : ""}</div></li>`).join("")}</ol></section>`;
 
 const experience = `${pageHeading("04", "Experience &amp; awards", "Medical training, research beginnings, and a few things outside the lab.")}
-  <nav class="section-jump" aria-label="On this page"><a href="#education">Education</a><a href="#training">Experience</a><a href="#awards">Awards</a><a href="#activities">Student life</a><a href="#skills">Skills</a></nav>
+  <nav class="section-jump" aria-label="On this page"><a href="#education">Education</a><a href="#training">Experience</a><a href="#awards">Awards</a><a href="#activities">Outside medicine</a><a href="#skills">Skills</a></nav>
   <section class="section compact-section" id="education" aria-labelledby="education-title">${groupHeading("01", "Education", "education-title")}${timeline(c.education)}</section>
   <section class="section compact-section" id="training" aria-labelledby="training-title">${groupHeading("02", "Clinical & research experience", "training-title")}${timeline(c.experience)}<p class="section-tail">Current collaborations are on the ${link("Research page", "research.html")}.</p></section>
   <section class="section compact-section" id="awards" aria-labelledby="awards-title">${groupHeading("03", "Honors & awards", "awards-title")}${timeline(c.awards)}</section>
-  <section class="section compact-section" id="activities" aria-labelledby="activities-title">${groupHeading("04", "Student life & other interests", "activities-title")}${timeline(c.activities)}</section>
+  <section class="section compact-section" id="activities" aria-labelledby="activities-title">${groupHeading("04", "Outside medicine", "activities-title")}${timeline(c.activities)}
+    <details class="side-notes" id="other-skills"><summary>Other skills &amp; certificates</summary><p>Mostly things I learned because they looked fun.</p><dl class="extra-skills">${c.otherSkills.map((s) => `<div><dt>${escape(s.title)}</dt><dd>${escape(s.text)}</dd></div>`).join("")}</dl></details>
+  </section>
   <section class="section compact-section" id="skills" aria-labelledby="skills-title">${groupHeading("05", "Skills & languages", "skills-title")}<div class="methods">${c.methods.map((m) => `<div><h3>${escape(m.title)}</h3><p>${escape(m.text)}</p></div>`).join("")}</div></section>`;
 
 const pages = [

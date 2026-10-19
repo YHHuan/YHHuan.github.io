@@ -32,6 +32,23 @@ assert.match(c.presentations.find((p) => p.venue === "ICOH 2027").note, /not yet
 assert.ok(c.projects.some((p) => p.id === "firefighters" && p.methods.includes("CGM")));
 assert.ok(c.awards.some((a) => a.organization.includes("NCMEA")));
 assert.ok(c.activities.some((a) => a.organization.includes("popular music club")));
+const exchange = c.experience.find((e) => e.organization.includes("Royal Melbourne Hospital"));
+assert.equal(exchange.date, "2024/09–12");
+assert.match(exchange.title, /Anaesthesiology & Neurology/);
+assert.ok(c.awards.some((a) => a.title === "Best PGY · Pediatrics"));
+const bestClerk = c.awards.find((a) => a.title === "Best Clerk");
+assert.equal(bestClerk.date, "Graduation");
+assert.match(bestClerk.organization, /不分科/);
+assert.ok(!/兒科|Pediatrics/.test(bestClerk.organization));
+assert.equal(c.personalLink.href, "https://www.instagram.com/shrimpy_thoughts/");
+assert.ok(c.activities.some((a) => a.note?.includes("Sydney 10K (46:43)") && a.note.includes("Melbourne half marathon (1:44:14)")));
+const credentials = c.otherSkills.map((s) => s.text).join(" ");
+for (const title of ["AIDA 2", "Open Water (OW)", "Advanced Open Water (AOW)", "Lifeguard certification", "Heavy motorcycle licence"]) assert.ok(credentials.includes(title));
+assert.ok(!/PADI|SSI|valid until|expires/i.test(credentials), "Do not guess issuers or expiry");
+assert.ok(!html["index.html"].includes("AIDA 2"), "Recreational credentials should remain off the homepage");
+assert.match(html["experience.html"], /<details class="side-notes" id="other-skills">/);
+assert.ok(!html["experience.html"].includes('id="other-skills" open'), "Credentials are closed by default");
+assert.ok(html["index.html"].includes('href="experience.html#activities"'));
 
 for (const file of pages) {
   const doc = html[file];
